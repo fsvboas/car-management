@@ -6,7 +6,7 @@ import styles from "../styles/components/Header.module.css";
 
 export function Header() {
   return (
-    <div className={styles.test}>
+    <div className={styles.links}>
       <Link href="/carros">
         <a>Carros</a>
       </Link>

@@ -1,7 +1,16 @@
-.test {
+.links {
   width: 100vw;
 
-  background-color: red;
+  background-color: #fff;
 
   padding: 1rem;
+
+  border-top: 0.2rem solid black;
+  border-bottom: 0.2rem solid black;
+}
+
+.links a {
+  margin: 0 0.5rem;
+
+  font-size: 1rem;
 }

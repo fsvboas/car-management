@@ -1,0 +1,25 @@
+.pageContainer {
+  padding: 2rem 3rem;
+}
+
+.title {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.title h1 {
+  font-size: 1.5rem;
+}
+
+/* .title button:hover {
+  background-color: var(--green);
+
+  transition: all 0.2s ease;
+} */
+
+.filters {
+  padding: 1rem 0;
+
+  display: flex;
+}

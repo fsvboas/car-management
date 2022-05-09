@@ -18,11 +18,28 @@
 
 body,
 input,
+select,
 textarea,
 button {
   font-size: 1rem;
   font-family: "Inter", sans-serif;
   font-weight: 400;
+}
+
+input,
+select {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0.15rem;
+
+  border: 0.15rem solid black;
+
+  width: 12rem;
+}
+
+select {
+  padding: 0.10rem;
 }
 
 button {

@@ -1,0 +1,48 @@
+.importNewCars {
+  display: flex;
+  flex-direction: column;
+
+  padding: 1.5rem 0;
+}
+
+.pageContainer {
+  padding: 2rem 3rem;
+
+  max-width: 285px;
+}
+
+.title {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.title h1 {
+  font-size: 1.5rem;
+}
+
+.inputField {
+  margin-bottom: 2rem;
+}
+
+.inputField:last-child {
+  margin-bottom: 1rem;
+}
+
+.buttonField {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+/* .buttonField .saveButton:hover {
+  background-color: var(--green);
+
+  transition: all 0.2s ease;
+}
+
+.buttonField .backButton:hover {
+  background-color: var(--red);
+
+  transition: all 0.2s ease;
+} */

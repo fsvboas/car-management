@@ -1,0 +1,33 @@
+{
+  "cars": [
+    {
+      "id": 1,
+      "name": "Passat",
+      "plate": "MFA-5712",
+      "color": "Vermelho",
+      "brand": "Volkswagen",
+      "carId": 1
+    },
+    {
+      "id": 2,
+      "name": "Palio",
+      "plate": "PRO-2073",
+      "color": "Prata",
+      "brand": "Fiat",
+      "carId": 2
+    }
+  ],
+
+  "brands": [
+    {
+      "id": 1,
+      "name": "Volkswagen",
+      "brandId": 1
+    },
+    {
+      "id": 2,
+      "name": "Fiat",
+      "brandId": 2
+    }
+  ]
+}

@@ -12,14 +12,35 @@
   font-size: 1.5rem;
 }
 
-/* .title button:hover {
-  background-color: var(--green);
-
-  transition: all 0.2s ease;
-} */
-
 .filters {
   padding: 1rem 0;
 
   display: flex;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+
+  margin: 2rem auto;
+
+  border: 0.1rem solid black;
+}
+
+.table th {
+  background-color: gray;
+
+  border-right: 0.1rem solid black;
+
+  padding: 0.1rem;
+}
+
+.table td {
+  background-color: lightgray;
+
+  text-align: center;
+
+  padding: 0.2rem;
+
+  border-right: 0.1rem solid black;
 }

@@ -2,13 +2,21 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import Button from "../../components/Button";
-
 import { Header } from "../../components/Header";
-
 import styles from "../../styles/pages/marcas/Brands.module.css";
+import { Table } from "../../components/Table";
+import { getBrands } from "../api/brands/getBrand";
 
 const Brands: NextPage = () => {
+  const [brands, setBrands] = useState<any[]>([]);
+
+  useEffect(() => {
+    getBrands().then((Response) => {
+      setBrands(Response);
+    });
+  }, []);
   return (
     <div>
       <Head>
@@ -32,6 +40,15 @@ const Brands: NextPage = () => {
             />
           </Link>
         </div>
+        <Table
+          path="marcas"
+          data={brands || []}
+          isObjectCar={true}
+          header={[
+            { id: "name", label: "Marca" },
+            { id: "actions", label: "Ações", renderRow: true },
+          ]}
+        />
       </div>
     </div>
   );

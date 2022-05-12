@@ -1,7 +1,6 @@
 import { carPaths, createConnection } from "../createConnection";
-import { baseUrl } from "../createConnection";
 
-export async function getCars() {
+export async function getCar() {
   try {
     const { data } = await createConnection.get(carPaths.getCar());
     return data;

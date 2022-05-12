@@ -13,9 +13,9 @@ export const createConnection = axios.create({
 export const carPaths = {
   getCar: () => `/cars`,
   getCarById: (id: number) => `/cars/${id}`,
-  saveCar: (id: number, plate: string, color: string) =>
-    `/cars${id ? `/${id}` : ""}`,
+  saveCar: () => `/cars`,
   deleteCar: (id: number) => `/cars/${id}`,
+  updateCar: (id: number) => `/cars/${id}`,
 };
 
 export const brandPaths = {
@@ -24,4 +24,5 @@ export const brandPaths = {
   saveBrand: (id: number, plate: string, color: string) =>
     `/brands${id ? `/${id}` : ""}`,
   deleteBrand: (id: number) => `/brands/${id}`,
+  updateBrand: (id: number) => `/cars/${id}`,
 };

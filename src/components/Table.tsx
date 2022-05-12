@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { ICar } from "../pages/carros";
+import { ICar } from "../pages/api/cars/interface/ICar";
 import styles from "../styles/components/Table.module.css";
 import Button from "./Button";
 import { ReactNode, useEffect, useState } from "react";
 import { mappedObjectDataKeyToPortuguese } from "../utils/mapObjectDataKeyToPortuguese";
 import { createConnection } from "../pages/api/createConnection";
 import { deleteCar } from "../pages/api/cars/deleteCar";
-import { getCars } from "../pages/api/cars/getCar";
-import { getBrands } from "../pages/api/brands/getBrand";
+import { getCar } from "../pages/api/cars/getCar";
+import { getBrand } from "../pages/api/brands/getBrand";
 import { deleteBrand } from "../pages/api/brands/deleteBrand";
 
 type headerProps = {
@@ -37,8 +37,8 @@ export function Table(props: TableProps) {
 
   function getDataByPath() {
     props.path.includes("carros")
-      ? getCars().then((res) => setData(res))
-      : getBrands().then((res) => setData(res));
+      ? getCar().then((res) => setData(res))
+      : getBrand().then((res) => setData(res));
   }
 
   useEffect(() => {

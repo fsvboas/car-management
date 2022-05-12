@@ -7,7 +7,7 @@ interface Props {
   onClick: () => void;
 }
 
-const Button: React.FC<Props> = ({
+export const Button: React.FC<Props> = ({
   text,
   radius,
   color,

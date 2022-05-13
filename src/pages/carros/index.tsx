@@ -5,25 +5,32 @@ import Link from "next/link";
 import styles from "../../styles/pages/carros/Cars.module.css";
 import { Header } from "../../components/Header";
 import { Table } from "../../components/Table";
-import Button from "../../components/Button";
-import { getCars } from "../api/cars/getCar";
-
-export interface ICar {
-  id?: number;
-  plate: string;
-  color: string;
-  brand: string;
-  name: string;
-}
+import { Button } from "../../components/Button";
+import { getCar } from "../api/cars/getCar";
+import { getBrand } from "../api/brands/getBrand";
+import { ICar } from "../api/cars/interface/ICar";
+import { IBrand } from "../api/brands/interface/IBrand";
 
 const Cars: NextPage = () => {
   const [cars, setCars] = useState<ICar[]>([]);
 
-  useEffect(() => {
-    getCars().then((Response) => {
-      setCars(Response);
+  const [brandList, setBrandList] = useState<IBrand[]>([]);
+
+  async function fetchBrands() {
+    await getBrand().then((response) => setBrandList(response));
+  }
+
+  async function fetchCars() {
+    await getCar().then((response) => {
+      setCars(response);
     });
+  }
+
+  useEffect(() => {
+    fetchBrands();
+    fetchCars();
   }, []);
+
   return (
     <div>
       <Head>
@@ -55,7 +62,10 @@ const Cars: NextPage = () => {
           <div className={styles.brandInput}>
             <label htmlFor="brand-filter">Filtrar por marca</label>
             <select name="brand-filter" id="brand-filter">
-              <option value="Volkswagen">Volkswagen</option>
+              <option></option>;
+              {brandList.map((brand) => {
+                return <option>{brand.name}</option>;
+              })}
             </select>
           </div>
         </div>

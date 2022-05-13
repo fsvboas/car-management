@@ -19,7 +19,7 @@ const NewCar: NextPage = () => {
     await getBrand().then((response) => setBrandList(response));
   }
 
-  async function insertCars() {
+  async function insertCar() {
     await saveCar({ plate, brand, color }).then(() => console.log("ok"));
   }
 
@@ -79,7 +79,7 @@ const NewCar: NextPage = () => {
               radius="0.25rem"
               color="#fff"
               margin="0 1rem 0 0"
-              onClick={() => insertCars()}
+              onClick={() => insertCar()}
             />
           </Link>
           <Link href="/">

@@ -7,14 +7,14 @@ import Button from "../../components/Button";
 import { Header } from "../../components/Header";
 import styles from "../../styles/pages/marcas/Brands.module.css";
 import { Table } from "../../components/Table";
-import { getBrands } from "../api/brands/getBrand";
+import { getBrand } from "../api/brands/getBrand";
 
 const Brands: NextPage = () => {
   const [brands, setBrands] = useState<any[]>([]);
 
   useEffect(() => {
-    getBrands().then((Response) => {
-      setBrands(Response);
+    getBrand().then((response) => {
+      setBrands(response);
     });
   }, []);
   return (
@@ -31,7 +31,7 @@ const Brands: NextPage = () => {
           <h1>Marcas</h1>
           <Link href="/marcas/novo">
             <Button
-              text="Novo carro"
+              text="Nova Marca"
               padding="0.5rem 2rem"
               radius="0.25rem"
               color="#fff"

@@ -1,9 +1,11 @@
 import { createConnection, brandPaths } from "../createConnection";
+import { IBrand } from "./interface/IBrand";
 
-export async function saveBrand(id: number, plate: string, color: string) {
+export async function saveBrand(dataBrand: IBrand) {
   try {
     const { data } = await createConnection.post(
-      brandPaths.saveBrand(id, plate, color)
+      brandPaths.saveBrand(),
+      dataBrand
     );
     return data;
   } catch (error) {

@@ -26,7 +26,7 @@ const EditCars = () => {
   }, []);
 
   return (
-    <CarForm dataCar={car} submit={(value) => updateList(value as ICar)} />
+    <CarForm pageTitle="Editar" dataCar={car} submit={(value) => updateList(value as ICar)} />
   );
 };
 

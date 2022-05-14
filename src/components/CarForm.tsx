@@ -12,9 +12,14 @@ import { getBrand } from "../pages/api/brands/getBrand";
 type CarFormProps = {
   submit?: (value: ICar) => void;
   dataCar?: ICar | undefined;
+  pageTitle: string;
 };
 
-export default function CarForm({ submit, dataCar = undefined }: CarFormProps) {
+export default function CarForm({
+  submit,
+  dataCar = undefined,
+  pageTitle,
+}: CarFormProps) {
   const router = useRouter();
 
   const [plate, setPlate] = useState<string>("");
@@ -41,8 +46,6 @@ export default function CarForm({ submit, dataCar = undefined }: CarFormProps) {
     fetchBrands();
   }, [dataCar]);
 
-  console.log(dataCar);
-
   return (
     <div>
       <Head>
@@ -54,7 +57,7 @@ export default function CarForm({ submit, dataCar = undefined }: CarFormProps) {
 
       <form onSubmit={submitForms} className={styles.pageContainer}>
         <div className={styles.title}>
-          <h1>Editar Carro</h1>
+          <h1>{pageTitle} Carro</h1>
         </div>
         <div className={styles.importNewCars}>
           <div className={styles.inputField}>

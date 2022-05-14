@@ -10,6 +10,7 @@ const NewCar: NextPage = () => {
 
   return (
     <CarForm
+      pageTitle="Novo"
       submit={(value) => {
         insertCar(value);
       }}

@@ -4,7 +4,8 @@ interface Props {
   color: string;
   padding: string;
   margin: string;
-  onClick: () => void;
+  onClick?: () => void;
+  type?: "submit" | "reset";
 }
 
 export const Button: React.FC<Props> = ({
@@ -14,9 +15,11 @@ export const Button: React.FC<Props> = ({
   padding,
   margin,
   onClick,
+  type = "submit",
 }) => {
   return (
     <button
+      type={type}
       onClick={onClick}
       style={{
         backgroundColor: color,

@@ -29,14 +29,14 @@ const Brands: NextPage = () => {
       <div className={styles.pageContainer}>
         <div className={styles.title}>
           <h1>Marcas</h1>
-          <Link href="/marcas/novo">
+          <Link href="/marcas/nova">
             <Button
               text="Nova Marca"
               padding="0.5rem 2rem"
               radius="0.25rem"
               color="#fff"
               margin="0"
-              onClick={() => console.log("Clicou novo carro pela aba marcas")}
+              onClick={() => console.log("Clicou em Nova Marca")}
             />
           </Link>
         </div>

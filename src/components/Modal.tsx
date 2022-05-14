@@ -12,15 +12,13 @@ type ModalProps = {
 };
 
 export function Modal({ open, close, submit, data }: ModalProps) {
-  console.log(typeof data);
   return (
     <div className={open === true ? styles.container : styles.invisible}>
       <div className={styles.modal}>
         <h1>
           Tem certeza que deseja excluir
-          {data?.plate
-            ? ` a placa "${data?.plate}" ?`
-            : ` a marca "${data?.name}" ?`}
+          {/*  @ts-ignore. */}
+          {data?.plate ? ` a placa "${data?.plate}" ?` : ` a marca "${data?.name}" ?`}
         </h1>
         <h3>Essa ação não poderá ser desfeita.</h3>
         <div className={styles.modalButtons}>

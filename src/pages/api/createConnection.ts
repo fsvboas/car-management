@@ -23,5 +23,5 @@ export const brandPaths = {
   getBrandById: (id: number) => `/brands/${id}`,
   saveBrand: () => `/brands`,
   deleteBrand: (id: number) => `/brands/${id}`,
-  updateBrand: (id: number) => `/cars/${id}`,
+  updateBrand: (id: number) => `/brands/${id}`,
 };

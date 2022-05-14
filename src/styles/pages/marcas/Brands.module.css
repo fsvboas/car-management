@@ -2,6 +2,13 @@
   padding: 2rem 3rem;
 }
 
+.importNewBrand {
+  display: flex;
+  flex-direction: column;
+
+  padding: 1.5rem 0;
+}
+
 .title {
   display: flex;
 

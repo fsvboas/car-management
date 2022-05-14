@@ -30,7 +30,7 @@ export default function BrandForm({
     router.push("/marcas");
     event.preventDefault();
     //@ts-ignore
-    submit?.({ name } as IBrand);
+    submit?.({ name: brand } as IBrand);
   };
 
   useEffect(() => {

@@ -9,6 +9,8 @@ import { deleteCar } from "../pages/api/cars/deleteCar";
 import { getCar } from "../pages/api/cars/getCar";
 import { getBrand } from "../pages/api/brands/getBrand";
 import { deleteBrand } from "../pages/api/brands/deleteBrand";
+import { Modal } from "./Modal";
+import { IBrand } from "../pages/api/brands/interface/IBrand";
 
 type headerProps = {
   id: string;
@@ -25,7 +27,12 @@ interface TableProps {
 export function Table(props: TableProps) {
   const [data, setData] = useState<ICar[] | { name: string }[]>([]);
 
+  const [open, setOpen] = useState<boolean>(false);
+
+  const [dataToExclude, setDataToExclude] = useState<ICar | IBrand>();
+
   async function deleteData(id: number) {
+    console.log(id);
     props.path.includes("carros")
       ? await deleteCar(id).catch((error) => {
           throw new Error(error);
@@ -46,53 +53,66 @@ export function Table(props: TableProps) {
   }, [data.length]);
 
   return (
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          {props.header.map((d) => {
-            return <th>{d.label}</th>;
-          })}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((rowData: any) => {
-          return (
-            <tr>
-              {props.header.map((column) => {
-                if (column?.renderRow) {
-                  return (
-                    <td>
-                      <Link href={`${props.path}/${rowData.id}`}>
+    <div>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            {props.header.map((d) => {
+              return <th>{d.label}</th>;
+            })}
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((rowData: any) => {
+            return (
+              <tr>
+                {props.header.map((column) => {
+                  if (column?.renderRow) {
+                    return (
+                      <td>
+                        <Link href={`${props.path}/${rowData.id}`}>
+                          <Button
+                            text="Editar"
+                            padding="0.25rem 1rem"
+                            radius="0.25rem"
+                            color="#fff"
+                            margin="0 1rem 0 0"
+                            onClick={() => console.log("Clicou em Editar")}
+                          />
+                        </Link>
                         <Button
-                          text="Editar"
+                          text="Excluir"
                           padding="0.25rem 1rem"
                           radius="0.25rem"
                           color="#fff"
-                          margin="0 1rem 0 0"
-                          onClick={() => console.log("Clicou em Editar")}
+                          margin="0"
+                          onClick={() => {
+                            setOpen(true);
+                            setDataToExclude(rowData);
+                          }}
                         />
-                      </Link>
-                      <Button
-                        text="Excluir"
-                        padding="0.25rem 1rem"
-                        radius="0.25rem"
-                        color="#fff"
-                        margin="0"
-                        onClick={() => {
-                          deleteData(rowData.id).then(() => {
-                            getDataByPath();
-                          });
-                        }}
-                      />
-                    </td>
-                  );
-                }
-                return <td>{rowData[column.id]}</td>;
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+                      </td>
+                    );
+                  }
+                  return <td>{rowData[column.id]}</td>;
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <Modal
+        open={open}
+        close={() => {
+          setOpen(false);
+        }}
+        submit={() => {
+          deleteData(dataToExclude?.id!).then(() => {
+            getDataByPath();
+          });
+        }}
+        data={dataToExclude! as ICar}
+      />
+    </div>
   );
 }

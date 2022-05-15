@@ -16,7 +16,9 @@ const EditBrands = () => {
   }
 
   async function updateList({ name }: IBrand) {
-    await updateBrand(Number(id), { name }).then(() => console.log("Marca editada"));
+    await updateBrand(Number(id), { name }).then(() =>
+      console.log("Marca editada")
+    );
   }
 
   useEffect(() => {
@@ -25,6 +27,7 @@ const EditBrands = () => {
 
   return (
     <BrandForm
+      pageTitle="Editar"
       dataBrand={brand}
       submit={(value) => updateList(value as IBrand)}
     />

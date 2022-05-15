@@ -10,11 +10,13 @@ import { IBrand } from "../pages/api/brands/interface/IBrand";
 type BrandFormProps = {
   submit?: (value: IBrand) => void;
   dataBrand?: IBrand | undefined;
+  pageTitle: string;
 };
 
 export default function BrandForm({
   submit,
   dataBrand = undefined,
+  pageTitle,
 }: BrandFormProps) {
   const router = useRouter();
 
@@ -45,7 +47,7 @@ export default function BrandForm({
 
       <form onSubmit={submitForms} className={styles.pageContainer}>
         <div className={styles.title}>
-          <h1>Editar Marca</h1>
+          <h1>{pageTitle} Marca</h1>
         </div>
         <div className={styles.inputContainer}>
           {dataBrand?.id ? (

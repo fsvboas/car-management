@@ -10,6 +10,7 @@ const NewBrand: NextPage = () => {
 
   return (
     <BrandForm
+      pageTitle="Nova"
       submit={(value) => {
         insertBrand(value);
       }}

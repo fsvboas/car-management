@@ -1,8 +1,7 @@
-import Link from "next/link";
-import { IBrand } from "../pages/api/brands/interface/IBrand";
-import { ICar } from "../pages/api/cars/interface/ICar";
 import styles from "../styles/components/Modal.module.css";
-import Button from "./Button";
+import { Button } from "./Button";
+import { ICar } from "../pages/api/cars/interface/ICar";
+import { IBrand } from "../pages/api/brands/interface/IBrand";
 
 type ModalProps = {
   open: boolean;

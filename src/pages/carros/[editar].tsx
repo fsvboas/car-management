@@ -1,9 +1,9 @@
+import CarForm from "../../components/CarForm";
+import { ICar } from "../api/cars/interface/ICar";
+import { getCarsById } from "../api/cars/getCarsById";
+import { updateCar } from "../api/cars/updateCar";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { ICar } from "../api/cars/interface/ICar";
-import { updateCar } from "../api/cars/updateCar";
-import { getCarsById } from "../api/cars/getCarsById";
-import CarForm from "../../components/CarForm";
 
 const EditCars = () => {
   const router = useRouter();

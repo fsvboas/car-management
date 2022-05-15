@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import type { NextPage } from "next";
 import styles from "../../styles/pages/Home.module.css";
 import { Header } from "../../components/Header";
-import { Table } from "../../components/Table";
 import { Button } from "../../components/Button";
-import { getCar } from "../api/cars/getCar";
-import { getBrand } from "../api/brands/getBrand";
+import { Table } from "../../components/Table";
 import { ICar } from "../api/cars/interface/ICar";
+import { getCar } from "../api/cars/getCar";
 import { IBrand } from "../api/brands/interface/IBrand";
+import { getBrand } from "../api/brands/getBrand";
+import { useEffect, useState } from "react";
 import { GrAdd } from "react-icons/gr";
 import { ReactNotifications } from "react-notifications-component";
 

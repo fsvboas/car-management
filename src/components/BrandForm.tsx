@@ -2,10 +2,10 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/components/Forms.module.css";
 import { Header } from "../components/Header";
-import Button from "../components/Button";
+import { Button } from "../components/Button";
+import { IBrand } from "../pages/api/brands/interface/IBrand";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { IBrand } from "../pages/api/brands/interface/IBrand";
 
 type BrandFormProps = {
   submit?: (value: IBrand) => void;

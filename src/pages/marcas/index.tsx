@@ -8,6 +8,7 @@ import styles from "../../styles/pages/Home.module.css";
 import { Table } from "../../components/Table";
 import { getBrand } from "../api/brands/getBrand";
 import { GrAdd } from "react-icons/gr";
+import { ReactNotifications } from "react-notifications-component";
 
 const Brands: NextPage = () => {
   const [brands, setBrands] = useState<any[]>([]);
@@ -26,6 +27,8 @@ const Brands: NextPage = () => {
 
       <Header />
 
+      <ReactNotifications />
+
       <div className={styles.pageContainer}>
         <div className={styles.title}>
           <h1>Marcas</h1>
@@ -42,6 +45,7 @@ const Brands: NextPage = () => {
           </Link>
         </div>
         <Table
+          message="Marca excluída com sucesso!"
           path="marcas"
           data={brands || []}
           isObjectCar={true}

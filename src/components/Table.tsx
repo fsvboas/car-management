@@ -11,6 +11,8 @@ import { Modal } from "./Modal";
 import { IBrand } from "../pages/api/brands/interface/IBrand";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { GrEdit } from "react-icons/gr";
+import { Store } from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 
 type headerProps = {
   id: string;
@@ -22,6 +24,7 @@ interface TableProps {
   header: headerProps[];
   isObjectCar: boolean;
   path: string;
+  message: string;
 }
 
 export function Table(props: TableProps) {
@@ -51,6 +54,18 @@ export function Table(props: TableProps) {
   useEffect(() => {
     getDataByPath();
   }, [data.length]);
+
+  function showToastDelete() {
+    Store.addNotification({
+      message: props.message,
+      type: "success",
+      container: "top-center",
+      width: 300,
+      dismiss: {
+        duration: 2000,
+      },
+    });
+  }
 
   return (
     <div>
@@ -111,6 +126,7 @@ export function Table(props: TableProps) {
         submit={() => {
           deleteData(dataToExclude?.id!).then(() => {
             getDataByPath();
+            showToastDelete();
           });
         }}
         data={dataToExclude! as ICar}

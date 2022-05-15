@@ -11,6 +11,7 @@ import { getBrand } from "../api/brands/getBrand";
 import { ICar } from "../api/cars/interface/ICar";
 import { IBrand } from "../api/brands/interface/IBrand";
 import { GrAdd } from "react-icons/gr";
+import { ReactNotifications } from "react-notifications-component";
 
 const Cars: NextPage = () => {
   const [cars, setCars] = useState<ICar[]>([]);
@@ -39,6 +40,8 @@ const Cars: NextPage = () => {
       </Head>
 
       <Header />
+
+      <ReactNotifications />
 
       <div className={styles.pageContainer}>
         <div className={styles.title}>
@@ -75,6 +78,7 @@ const Cars: NextPage = () => {
           </div>
         </div>
         <Table
+          message="Carro excluído com sucesso!"
           path="carros"
           data={cars || []}
           isObjectCar={true}

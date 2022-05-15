@@ -1,33 +1,56 @@
 {
   "cars": [
     {
-      "id": 1,
-      "name": "Passat",
       "plate": "MFA-5712",
-      "color": "Vermelho",
       "brand": "Volkswagen",
-      "carId": 1
+      "color": "Vermelho",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Palio",
       "plate": "PRO-2073",
+      "brand": "Hyundai",
+      "color": "Preto",
+      "id": 2
+    },
+    {
+      "plate": "FLO-2022",
+      "brand": "Honda",
       "color": "Prata",
+      "id": 3
+    },
+    {
+      "plate": "XTY-4592",
+      "brand": "BMW",
+      "color": "Azul",
+      "id": 4
+    },
+    {
+      "plate": "ZTP-9192",
       "brand": "Fiat",
-      "carId": 2
+      "color": "Branco",
+      "id": 5
     }
   ],
-
   "brands": [
     {
-      "id": 1,
       "name": "Volkswagen",
-      "brandId": 1
+      "id": 1
     },
     {
-      "id": 2,
+      "name": "Hyundai",
+      "id": 2
+    },
+    {
+      "name": "Honda",
+      "id": 3
+    },
+    {
+      "name": "BMW",
+      "id": 4
+    },
+    {
       "name": "Fiat",
-      "brandId": 2
+      "id": 5
     }
   ]
 }

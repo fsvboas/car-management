@@ -31,7 +31,7 @@ export default function CarForm({
     await getBrand().then((response) => setBrandList(response));
   }
 
-  const submitForms = (event: any) => {
+  const submitForms = (event: React.FormEvent<HTMLFormElement>) => {
     router.push("/");
     event.preventDefault();
     submit?.({ plate, brand, color } as ICar);

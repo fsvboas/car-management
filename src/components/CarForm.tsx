@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import styles from "../styles/pages/carros/1/EditCar.module.css";
+import styles from "../styles/pages/Forms.module.css";
 import { Header } from "../components/Header";
 import Button from "../components/Button";
 import { useRouter } from "next/router";
@@ -59,7 +59,7 @@ export default function CarForm({
         <div className={styles.title}>
           <h1>{pageTitle} Carro</h1>
         </div>
-        <div className={styles.importNewCars}>
+        <div className={styles.inputContainer}>
           <div className={styles.inputField}>
             <label htmlFor="new-plate">Placa</label>
             <input

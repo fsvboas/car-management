@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import styles from "../styles/pages/carros/1/EditCar.module.css";
+import styles from "../styles/pages/Forms.module.css";
 import { Header } from "../components/Header";
 import Button from "../components/Button";
 import { useRouter } from "next/router";
@@ -47,7 +47,7 @@ export default function BrandForm({
         <div className={styles.title}>
           <h1>Editar Marca</h1>
         </div>
-        <div className={styles.importNewBrand}>
+        <div className={styles.inputContainer}>
           {dataBrand?.id ? (
             <div className={styles.inputField}>
               <label htmlFor="new-color">ID</label>

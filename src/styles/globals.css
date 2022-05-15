@@ -6,16 +6,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  --white: #fff;
-  --background: #f2f3f5;
-  --gray-line: #dcdde0;
-  --text: #666666;
-  --title: #2e384d;
-  --red: #e83f5b;
-  --green: #4cd62b;
-}
-
 body,
 input,
 select,
@@ -36,10 +26,6 @@ select {
   border: 0.15rem solid black;
 
   width: 12rem;
-}
-
-select {
-  padding: 0.10rem;
 }
 
 button {

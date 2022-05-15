@@ -1,10 +1,3 @@
-.importNewCars {
-  display: flex;
-  flex-direction: column;
-
-  padding: 1.5rem 0;
-}
-
 .pageContainer {
   padding: 2rem 3rem;
 
@@ -19,6 +12,13 @@
 
 .title h1 {
   font-size: 1.5rem;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+
+  padding: 1.5rem 0;
 }
 
 .inputField {

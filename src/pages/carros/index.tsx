@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import styles from "../../styles/pages/carros/Cars.module.css";
+import styles from "../../styles/pages/Home.module.css";
 import { Header } from "../../components/Header";
 import { Table } from "../../components/Table";
 import { Button } from "../../components/Button";
@@ -13,7 +13,6 @@ import { IBrand } from "../api/brands/interface/IBrand";
 
 const Cars: NextPage = () => {
   const [cars, setCars] = useState<ICar[]>([]);
-
   const [brandList, setBrandList] = useState<IBrand[]>([]);
 
   async function fetchBrands() {
@@ -55,11 +54,15 @@ const Cars: NextPage = () => {
           </Link>
         </div>
         <div className={styles.filters}>
-          <div className={styles.plateInput}>
+          <div>
             <label htmlFor="plate-filter">Filtrar por placa</label>
-            <input type="text" name="plate-filter" />
+            <input
+              className={styles.plateInput}
+              type="text"
+              name="plate-filter"
+            />
           </div>
-          <div className={styles.brandInput}>
+          <div>
             <label htmlFor="brand-filter">Filtrar por marca</label>
             <select name="brand-filter" id="brand-filter">
               <option></option>;
@@ -69,7 +72,6 @@ const Cars: NextPage = () => {
             </select>
           </div>
         </div>
-
         <Table
           path="carros"
           data={cars || []}

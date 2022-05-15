@@ -1,11 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import { Header } from "../../components/Header";
-import styles from "../../styles/pages/marcas/Brands.module.css";
+import styles from "../../styles/pages/Home.module.css";
 import { Table } from "../../components/Table";
 import { getBrand } from "../api/brands/getBrand";
 

@@ -18,18 +18,8 @@
   display: flex;
 }
 
-.plateInput,
-.brandInput {
-  display: flex;
-  flex-direction: column;
-}
-
-.plateInput input {
+.plateInput {
   width: 10rem;
 
   margin-right: 2rem;
-}
-
-.brandInput input {
-  width: 12rem;
 }

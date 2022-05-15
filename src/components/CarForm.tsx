@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import styles from "../styles/pages/Forms.module.css";
+import styles from "../styles/components/Forms.module.css";
 import { Header } from "../components/Header";
 import Button from "../components/Button";
 import { useRouter } from "next/router";

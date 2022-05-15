@@ -6,6 +6,7 @@ interface Props {
   margin: string;
   onClick?: () => void;
   type?: "submit" | "reset";
+  icon?: React.ReactNode;
 }
 
 export const Button: React.FC<Props> = ({
@@ -16,6 +17,7 @@ export const Button: React.FC<Props> = ({
   margin,
   onClick,
   type = "submit",
+  icon,
 }) => {
   return (
     <button
@@ -28,6 +30,7 @@ export const Button: React.FC<Props> = ({
         margin: margin,
       }}
     >
+      {icon}
       {text}
     </button>
   );

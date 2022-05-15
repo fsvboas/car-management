@@ -10,6 +10,7 @@ import { getCar } from "../api/cars/getCar";
 import { getBrand } from "../api/brands/getBrand";
 import { ICar } from "../api/cars/interface/ICar";
 import { IBrand } from "../api/brands/interface/IBrand";
+import { GrAdd } from "react-icons/gr";
 
 const Cars: NextPage = () => {
   const [cars, setCars] = useState<ICar[]>([]);
@@ -45,6 +46,7 @@ const Cars: NextPage = () => {
           <Link href="/carros/novo">
             <Button
               text="Novo carro"
+              icon={<GrAdd className={styles.buttonIcon} />}
               padding="0.5rem 2rem"
               radius="0.25rem"
               color="#fff"

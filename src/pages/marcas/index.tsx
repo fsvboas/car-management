@@ -7,6 +7,7 @@ import { Header } from "../../components/Header";
 import styles from "../../styles/pages/Home.module.css";
 import { Table } from "../../components/Table";
 import { getBrand } from "../api/brands/getBrand";
+import { GrAdd } from "react-icons/gr";
 
 const Brands: NextPage = () => {
   const [brands, setBrands] = useState<any[]>([]);
@@ -31,6 +32,7 @@ const Brands: NextPage = () => {
           <Link href="/marcas/nova">
             <Button
               text="Nova Marca"
+              icon={<GrAdd className={styles.buttonIcon} />}
               padding="0.5rem 2rem"
               radius="0.25rem"
               color="#fff"

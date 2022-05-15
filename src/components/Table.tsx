@@ -2,15 +2,15 @@ import Link from "next/link";
 import { ICar } from "../pages/api/cars/interface/ICar";
 import styles from "../styles/components/Table.module.css";
 import Button from "./Button";
-import { ReactNode, useEffect, useState } from "react";
-import { mappedObjectDataKeyToPortuguese } from "../utils/mapObjectDataKeyToPortuguese";
-import { createConnection } from "../pages/api/createConnection";
+import { useEffect, useState } from "react";
 import { deleteCar } from "../pages/api/cars/deleteCar";
 import { getCar } from "../pages/api/cars/getCar";
 import { getBrand } from "../pages/api/brands/getBrand";
 import { deleteBrand } from "../pages/api/brands/deleteBrand";
 import { Modal } from "./Modal";
 import { IBrand } from "../pages/api/brands/interface/IBrand";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { GrEdit } from "react-icons/gr";
 
 type headerProps = {
   id: string;
@@ -73,6 +73,7 @@ export function Table(props: TableProps) {
                         <Link href={`${props.path}/${rowData.id}`}>
                           <Button
                             text="Editar"
+                            icon={<GrEdit className={styles.buttonIcon} />}
                             padding="0.25rem 1rem"
                             radius="0.25rem"
                             color="#fff"
@@ -82,6 +83,7 @@ export function Table(props: TableProps) {
                         </Link>
                         <Button
                           text="Excluir"
+                          icon={<FaRegTrashAlt className={styles.buttonIcon} />}
                           padding="0.25rem 1rem"
                           radius="0.25rem"
                           color="#fff"

@@ -6,7 +6,6 @@ import Button from "../components/Button";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { IBrand } from "../pages/api/brands/interface/IBrand";
-import { getBrand } from "../pages/api/brands/getBrand";
 
 type BrandFormProps = {
   submit?: (value: IBrand) => void;
@@ -20,16 +19,10 @@ export default function BrandForm({
   const router = useRouter();
 
   const [brand, setBrand] = useState<string>("");
-  const [brandList, setBrandList] = useState<IBrand[]>([]);
-
-  async function fetchBrands() {
-    await getBrand().then((response) => setBrandList(response));
-  }
 
   const submitForms = (event: any) => {
     router.push("/marcas");
     event.preventDefault();
-    //@ts-ignore
     submit?.({ name: brand } as IBrand);
   };
 
@@ -37,7 +30,6 @@ export default function BrandForm({
     if (dataBrand !== undefined) {
       setBrand(dataBrand.name);
     }
-    fetchBrands();
   }, [dataBrand]);
 
   console.log(dataBrand);
@@ -56,15 +48,17 @@ export default function BrandForm({
           <h1>Editar Marca</h1>
         </div>
         <div className={styles.importNewBrand}>
-          {/* <div className={styles.inputField}>
-            <label htmlFor="new-color">ID</label>
-            <input
-              value={color}
-              type="text"
-              name="new-color"
-              onChange={(event) => setColor(event.currentTarget.value)}
-            />
-          </div> */}
+          {dataBrand?.id ? (
+            <div className={styles.inputField}>
+              <label htmlFor="new-color">ID</label>
+              <input
+                value={dataBrand?.id}
+                type="text"
+                name="new-color"
+                disabled
+              />
+            </div>
+          ) : null}
           <div className={styles.inputField}>
             <label htmlFor="new-brand">Marca</label>
             <input

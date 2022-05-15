@@ -5,7 +5,7 @@ import { IBrand } from "../api/brands/interface/IBrand";
 
 const NewBrand: NextPage = () => {
   async function insertBrand({ name }: IBrand) {
-    await saveBrand({ name }).then(() => console.log("ok"));
+    await saveBrand({ name }).then(() => console.log("Marca criada"));
   }
 
   return (

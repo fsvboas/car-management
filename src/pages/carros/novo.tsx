@@ -5,7 +5,7 @@ import { ICar } from "../api/cars/interface/ICar";
 
 const NewCar: NextPage = () => {
   async function insertCar({ plate, brand, color }: ICar) {
-    await saveCar({ plate, brand, color }).then(() => console.log("ok"));
+    await saveCar({ plate, brand, color }).then(() => console.log("Carro criado"));
   }
 
   return (

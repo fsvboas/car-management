@@ -16,7 +16,7 @@ const EditBrands = () => {
   }
 
   async function updateList({ name }: IBrand) {
-    await updateBrand(Number(id), { name }).then(() => console.log("ok"));
+    await updateBrand(Number(id), { name }).then(() => console.log("Marca editada"));
   }
 
   useEffect(() => {

@@ -17,7 +17,7 @@ const EditCars = () => {
 
   async function updateList({ plate, brand, color }: ICar) {
     await updateCar(Number(id), { plate, brand, color }).then(() =>
-      console.log("ok")
+      console.log("Carro editado")
     );
   }
 

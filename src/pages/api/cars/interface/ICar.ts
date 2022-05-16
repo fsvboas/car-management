@@ -1,5 +1,5 @@
 export interface ICar {
-  id?: number;
+  id?: string;
   plate: string;
   color: string;
   brand: string;

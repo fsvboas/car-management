@@ -17,7 +17,7 @@
     "react-hook-form": "^7.31.1",
     "react-icons": "^4.3.1",
     "react-notifications-component": "^4.0.0",
-    "react-query": "^3.38.1",
+    "react-query": "^3.39.0",
     "styled-icons": "^10.45.0"
   },
   "devDependencies": {

@@ -5,32 +5,27 @@ import styles from "../../styles/pages/Home.module.css";
 import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
 import { Table } from "../../components/Table";
+import SelectBrand from "../../components/SelectBrand";
 import { ICar } from "../api/cars/interface/ICar";
 import { getCar } from "../api/cars/getCar";
-import { IBrand } from "../api/brands/interface/IBrand";
-import { getBrand } from "../api/brands/getBrand";
-import { useEffect, useState } from "react";
 import { GrAdd } from "react-icons/gr";
+import { useState } from "react";
+import { useQuery } from "react-query";
 import { ReactNotifications } from "react-notifications-component";
 
 const Cars: NextPage = () => {
-  const [cars, setCars] = useState<ICar[]>([]);
-  const [brandList, setBrandList] = useState<IBrand[]>([]);
+  const [searchPlate, setSearchPlate] = useState<string>("");
+  const [searchBrand, setSearchBrand] = useState<string>("");
 
-  async function fetchBrands() {
-    await getBrand().then((response) => setBrandList(response));
-  }
+  const query = useQuery("cars", getCar);
 
-  async function fetchCars() {
-    await getCar().then((response) => {
-      setCars(response);
-    });
-  }
-
-  useEffect(() => {
-    fetchBrands();
-    fetchCars();
-  }, []);
+  const carsFilter = query?.data
+    ?.filter((car: ICar) =>
+      car?.plate?.toLowerCase().includes(searchPlate.toLowerCase())
+    )
+    ?.filter((car: ICar) =>
+      car?.brand?.toLowerCase().includes(searchBrand?.toLowerCase())
+    );
 
   return (
     <div>
@@ -62,25 +57,24 @@ const Cars: NextPage = () => {
           <div>
             <label htmlFor="plate-filter">Filtrar por placa</label>
             <input
+              value={searchPlate}
               className={styles.plateInput}
               type="text"
               name="plate-filter"
+              onChange={(event) => setSearchPlate(event.currentTarget.value)}
             />
           </div>
           <div>
             <label htmlFor="brand-filter">Filtrar por marca</label>
-            <select name="brand-filter" id="brand-filter">
-              <option></option>;
-              {brandList.map((brand) => {
-                return <option>{brand.name}</option>;
-              })}
-            </select>
+            <SelectBrand
+              state={searchBrand}
+              setState={(event) => setSearchBrand(event.currentTarget.value)}
+            />
           </div>
         </div>
         <Table
-          message="Carro excluído com sucesso!"
           path="carros"
-          data={cars || []}
+          data={carsFilter || []}
           isObjectCar={true}
           header={[
             { id: "plate", label: "Placa" },

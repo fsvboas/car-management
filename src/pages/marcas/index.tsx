@@ -1,23 +1,18 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import styles from "../../styles/pages/Home.module.css";
 import Button from "../../components/Button";
 import { Header } from "../../components/Header";
-import styles from "../../styles/pages/Home.module.css";
 import { Table } from "../../components/Table";
 import { getBrand } from "../api/brands/getBrand";
 import { GrAdd } from "react-icons/gr";
+import { useQuery } from "react-query";
 import { ReactNotifications } from "react-notifications-component";
 
 const Brands: NextPage = () => {
-  const [brands, setBrands] = useState<any[]>([]);
+  const query = useQuery("brands", getBrand);
 
-  useEffect(() => {
-    getBrand().then((response) => {
-      setBrands(response);
-    });
-  }, []);
   return (
     <div>
       <Head>
@@ -45,9 +40,8 @@ const Brands: NextPage = () => {
           </Link>
         </div>
         <Table
-          message="Marca excluída com sucesso!"
           path="marcas"
-          data={brands || []}
+          data={query.data || []}
           isObjectCar={true}
           header={[
             { id: "name", label: "Marca" },

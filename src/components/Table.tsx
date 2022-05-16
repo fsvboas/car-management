@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { GrEdit } from "react-icons/gr";
 import { Store } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
+import { useMutation, useQueryClient } from "react-query";
 
 type headerProps = {
   id: string;
@@ -24,40 +25,37 @@ interface TableProps {
   header: headerProps[];
   isObjectCar: boolean;
   path: string;
-  message: string;
 }
 
 export function Table(props: TableProps) {
-  const [data, setData] = useState<ICar[] | { name: string }[]>([]);
-
   const [open, setOpen] = useState<boolean>(false);
-
   const [dataToExclude, setDataToExclude] = useState<ICar | IBrand>();
 
-  async function deleteData(id: number) {
-    console.log(id);
+  const queryClient = useQueryClient();
+
+  function deleteData(id: string) {
     props.path.includes("carros")
-      ? await deleteCar(id).catch((error) => {
-          throw new Error(error);
-        })
-      : await deleteBrand(id).catch((error) => {
-          throw new Error(error);
-        });
+      ? carMutation.mutate(id)
+      : brandMutation.mutate(id);
   }
 
-  function getDataByPath() {
-    props.path.includes("carros")
-      ? getCar().then((res) => setData(res))
-      : getBrand().then((res) => setData(res));
-  }
+  const carMutation = useMutation(deleteCar, {
+    onSuccess: () => {
+      showToastDelete({ message: "Carro excluído com sucesso!" });
+      queryClient.invalidateQueries("cars");
+    },
+  });
 
-  useEffect(() => {
-    getDataByPath();
-  }, [data.length]);
+  const brandMutation = useMutation(deleteBrand, {
+    onSuccess: () => {
+      showToastDelete({ message: "Marca excluída com sucesso!" });
+      queryClient.invalidateQueries("brands");
+    },
+  });
 
-  function showToastDelete() {
+  function showToastDelete({ message }: { message: String }) {
     Store.addNotification({
-      message: props.message,
+      message: message,
       type: "success",
       container: "top-center",
       width: 300,
@@ -78,7 +76,7 @@ export function Table(props: TableProps) {
           </tr>
         </thead>
         <tbody>
-          {data.map((rowData: any) => {
+          {props.data.map((rowData: any) => {
             return (
               <tr>
                 {props.header.map((column) => {
@@ -124,10 +122,7 @@ export function Table(props: TableProps) {
           setOpen(false);
         }}
         submit={() => {
-          deleteData(dataToExclude?.id!).then(() => {
-            getDataByPath();
-            showToastDelete();
-          });
+          deleteData(dataToExclude?.id!);
         }}
         data={dataToExclude! as ICar}
       />
